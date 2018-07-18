@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Index</title>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'randomWord/css/style.css' %}">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="title">
+                <p>Random Word {{request.session.count}}</p>
+            </div>
+            <div class="time">
+                <h5>{{randomword}}</h5>
+            </div>
+            <div class="but">
+            <a href="/random_word" class="btn btn-success">Generate</a>
+            </div>
+        </div>
+    </body>
+  </html>

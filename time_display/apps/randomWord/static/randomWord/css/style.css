@@ -1,0 +1,26 @@
+.wrapper {
+    width: 980px;
+    height: 600px;
+    background-color: lightsteelblue;
+    margin: 0px auto;
+    padding: 50px;
+}
+.title {
+    width: 300px;
+    margin: 0px auto;
+}
+.time {
+    width: 400px;
+    border: 1px solid black;
+    margin: 0px auto; 
+    text-align: center;
+    padding: 5px;
+}
+p, h2 {
+    text-align: center;
+
+}
+.but {
+    width: 50px ;
+    margin: 30px auto; 
+}
