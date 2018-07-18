@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'survey/CSS/result_style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div id="main">
+            <p id="header">Submitted info</p>
+            <ul>
+                <li>
+                    <p class="inline">Name:</p>
+                    <p class="inline">{{request.session.data.name}}</p>
+                <li>
+                    <p class="inline">Dojo Location:</p>
+                    <p class="inline">{{ request.session.data.location }}</p>
+                </li>
+                <li>
+                    <p class="inline">Favorite Language:</p>
+                    <p class="inline">{{ request.session.data.language }}</p>
+                </li>
+                <li>
+                    <p class="inline" id="type">Comment:</p>
+                    <p class="inline" id="text">{{ request.session.data.comment }}</p>
+                </li>
+            </ul>
+            <form action="/">
+                <button type="submit" value="goback">Go Back</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
