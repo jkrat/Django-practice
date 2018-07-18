@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session Words</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <style>
+        .wrapper {
+            min-height: 800px;
+            width: 1000px;
+            margin: 0px auto;
+            padding: 50px 20px;
+        }
+        #main {
+            width: 100%;
+            border: 1px solid slategray;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 5px;
+        }
+        div.container {
+            margin: 20px;
+            padding: 20px 20px 0px 0px;
+            width: 400px;
+        }
+        .text-red {
+            color: rgb(213, 63, 63);
+            display: inline;
+            font-size: 12px;
+        }
+        .vl {
+            border-right: 4px solid slategray;
+            height: 500px;
+        }
+        .form-group {
+            margin: 30px 0px;
+        }
+        .word {
+            border: 1px solid rgb(150, 148, 148);
+        }
+        .clear {
+            width: 100%;
+            height: 60px;
+        }
+        p{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .two {
+            padding-top: 100px;
+        }
+        .a {
+            float: right;
+        }
+        .row {
+            margin: 10px 0px;;
+        }
+        .red {
+            color: red;
+        }
+        .green {
+            color: green;
+        }
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class='wrapper'>
+        <h2>Add a new word</h2>
+
+        <div id='main'>
+            <div class="container vl">
+                <h4>Add a new word</h4>
+
+                <form action="/process" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control word" name="word" value="">
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="color" value="red" checked>
+                      <label class="form-check-label" for="exampleRadios1">
+                        Red
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="color" value="green">
+                      <label class="form-check-label" for="exampleRadios2">
+                        Green
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="color" value="blue">
+                      <label class="form-check-label" for="exampleRadios2">
+                        Blue
+                      </label>
+                    </div>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" Name="showBig" value="1">
+                        <label class="form-check-label" for="exampleCheck1">show in BIG font!</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add to Session</button>
+                </form>
+            </div>
+            <div class="container two">
+                <div class="clear">
+                    <a href="/clear" class="a"><button class="btn btn-primary">Clear Session</button></a>
+                </div>
+                {% for item in request.session.words %}
+                <div class="row">
+                    <div class="col-4 {{item.color}}">
+                        <h{{item.showBig}}>{{item.word}}</h{{item.showBig}}>
+                    </div>
+                    <div class="col">
+                        <p>added 9:15:23 PM, June 5, 2017</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
